@@ -31,6 +31,7 @@
 
     .filters{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
     .filters button{padding:8px 10px;border-radius:999px;border:1px solid #e6e7ea;background:white;cursor:pointer}
+    .filters button.active{background:var(--accent);color:#fff;border-color:transparent}
 
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
     .card{background:var(--card);border-radius:12px;padding:10px;box-shadow:0 4px 14px rgba(20,20,30,0.05);display:flex;flex-direction:column}
@@ -49,13 +50,11 @@
 
     footer{padding:18px 0;border-top:1px solid #eee;margin-top:30px;color:var(--muted)}
 
-    /* theme per template */
     .theme-fashion{--accent:#fb7185}
     .theme-electronics{--accent:#6366f1}
     .theme-grocery{--accent:#10b981}
     .theme-furniture{--accent:#f59e0b}
 
-    /* responsive */
     @media (max-width:900px){.hero{grid-template-columns:1fr;}.hero-right img{width:100%;height:200px}}
   </style>
 </head>
@@ -64,7 +63,7 @@
     <div class="container nav">
       <div style="display:flex;align-items:center;gap:14px;">
         <div class="brand">ZIVA STORES</div>
-        <div style="color:var(--muted);font-size:13px">(4 templates in one file)</div>
+      
       </div>
       <div style="margin-left:auto" class="tabs">
         <button data-site="fashion" class="active">Fashion</button>
@@ -76,6 +75,7 @@
   </header>
 
   <main>
+    <!-- Fashion Template -->
     <section id="fashion" class="site theme-fashion" data-title="Luxe Boutique">
       <div class="container">
         <div class="hero">
@@ -104,12 +104,11 @@
         </div>
 
         <div class="filters" id="filter-row-fashion"></div>
-
         <div class="grid" id="grid-fashion"></div>
       </div>
     </section>
 
-    <!-- Electronics -->
+    <!-- Electronics Template -->
     <section id="electronics" class="site theme-electronics" style="display:none" data-title="VoltTech">
       <div class="container">
         <div class="hero">
@@ -142,7 +141,7 @@
       </div>
     </section>
 
-    <!-- Grocery -->
+    <!-- Grocery Template -->
     <section id="grocery" class="site theme-grocery" style="display:none" data-title="DailyFresh">
       <div class="container">
         <div class="hero">
@@ -175,7 +174,7 @@
       </div>
     </section>
 
-    <!-- Furniture -->
+    <!-- Furniture Template -->
     <section id="furniture" class="site theme-furniture" style="display:none" data-title="NordLoft">
       <div class="container">
         <div class="hero">
@@ -209,7 +208,7 @@
     </section>
   </main>
 
-  <!-- Cart (shared) -->
+  <!-- Cart -->
   <aside id="cart" class="cart" style="display:none">
     <h3>Your cart</h3>
     <div id="cart-items"></div>
@@ -229,27 +228,26 @@
   <script>
     document.getElementById('yr').textContent = new Date().getFullYear();
 
-    // Data for all templates
     const DATA = {
-      fashion: {
-        filters: ['Women','Men','Accessories','New In'],
-        products: [
+      fashion:{
+        filters:['Women','Men','Accessories','New In'],
+        products:[
           {id:'lx-dress', name:'Satin Slip Dress', price:2999, rating:4.5, category:'Women', img:'https://images.unsplash.com/photo-1520975723139-5be1b8f9b6a6?q=80&w=800&auto=format&fit=crop'},
           {id:'lx-tee', name:'Oversized Graphic Tee', price:999, rating:4.2, category:'Men', img:'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=800&auto=format&fit=crop'},
           {id:'lx-sneaker', name:'Retro Court Sneakers', price:4499, rating:4.7, category:'Men', img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop'},
-          {id:'lx-bag', name:'Mini Crossbody Bag', price:1899, rating:4.1, category:'Accessories', img:'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=800&auto=format&fit=crop'},
+          {id:'lx-bag', name:'Mini Crossbody Bag', price:1899, rating:4.1, category:'Accessories', img:'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=800&auto=format&fit=crop'}
         ]
       },
-      electronics: {
+      electronics:{
         filters:['Phones','Audio','Laptops','Wearables'],
         products:[
           {id:'vt-headphones', name:'Noise-Canceling Headphones', price:6999, rating:4.6, category:'Audio', img:'https://images.unsplash.com/photo-1518441902113-c1d4e3a76f56?q=80&w=800&auto=format&fit=crop'},
           {id:'vt-smartwatch', name:'AMOLED Smartwatch', price:5499, rating:4.3, category:'Wearables', img:'https://images.unsplash.com/photo-1511385348-a52b4a160dc2?q=80&w=800&auto=format&fit=crop'},
           {id:'vt-laptop', name:'UltraThin Laptop 14', price:57999, rating:4.5, category:'Laptops', img:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=800&auto=format&fit=crop'},
-          {id:'vt-buds', name:'TWS Earbuds Pro', price:3499, rating:4.0, category:'Audio', img:'https://images.unsplash.com/photo-1585386959984-a4155223168f?q=80&w=800&auto=format&fit=crop'},
+          {id:'vt-buds', name:'TWS Earbuds Pro', price:3499, rating:4.0, category:'Audio', img:'https://images.unsplash.com/photo-1585386959984-a4155223168f?q=80&w=800&auto=format&fit=crop'}
         ]
       },
-      grocery: {
+      grocery:{
         filters:['Fruits','Vegetables','Dairy','Bakery'],
         products:[
-          {id:'df-apples', name:'Organic Honeycrisp Apples (1kg)', price:199, rating:4.8, category:'Fruits', img:'https://
+          {id:'df-apples', name:'Organic Honeycrisp Apples (1kg)', price:199, rating:4.8, category:'Fruits', img

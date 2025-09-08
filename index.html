@@ -64,7 +64,7 @@
     <div class="container nav">
       <div style="display:flex;align-items:center;gap:14px;">
         <div class="brand">ZIVA STORES</div>
-        <div style="color:var(--muted);font-size:13px"> </div>
+        <div style="color:var(--muted);font-size:13px">(4 templates in one file)</div>
       </div>
       <div style="margin-left:auto" class="tabs">
         <button data-site="fashion" class="active">Fashion</button>
@@ -85,7 +85,7 @@
               <p>New-season styles and staple silhouettes. Free returns within 7 days.</p>
               <div style="margin-top:12px">
                 <button class="btn" onclick="scrollToProducts()">Shop Fashion</button>
-                <button class="ghost" style="margin-left:8px">Explore</button>
+                <button class="ghost" style="margin-left:8px" onclick="clearFilters('fashion')">Explore</button>
               </div>
             </div>
           </div>
@@ -119,7 +119,7 @@
               <p>Cutting-edge gadgets at honest prices.</p>
               <div style="margin-top:12px">
                 <button class="btn" onclick="scrollToProducts()">Shop Electronics</button>
-                <button class="ghost" style="margin-left:8px">Explore</button>
+                <button class="ghost" style="margin-left:8px" onclick="clearFilters('electronics')">Explore</button>
               </div>
             </div>
           </div>
@@ -152,7 +152,7 @@
               <p>Fresh produce and pantry essentials delivered quickly.</p>
               <div style="margin-top:12px">
                 <button class="btn" onclick="scrollToProducts()">Shop Grocery</button>
-                <button class="ghost" style="margin-left:8px">Explore</button>
+                <button class="ghost" style="margin-left:8px" onclick="clearFilters('grocery')">Explore</button>
               </div>
             </div>
           </div>
@@ -185,7 +185,7 @@
               <p>Design-forward pieces that fit modern homes.</p>
               <div style="margin-top:12px">
                 <button class="btn" onclick="scrollToProducts()">Shop Furniture</button>
-                <button class="ghost" style="margin-left:8px">Explore</button>
+                <button class="ghost" style="margin-left:8px" onclick="clearFilters('furniture')">Explore</button>
               </div>
             </div>
           </div>
@@ -234,182 +234,22 @@
       fashion: {
         filters: ['Women','Men','Accessories','New In'],
         products: [
-          {id:'lx-dress', name:'Satin Slip Dress', price:2999, rating:4.5, img:'https://images.unsplash.com/photo-1520975723139-5be1b8f9b6a6?q=80&w=800&auto=format&fit=crop'},
-          {id:'lx-tee', name:'Oversized Graphic Tee', price:999, rating:4.2, img:'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=800&auto=format&fit=crop'},
-          {id:'lx-sneaker', name:'Retro Court Sneakers', price:4499, rating:4.7, img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop'},
-          {id:'lx-bag', name:'Mini Crossbody Bag', price:1899, rating:4.1, img:'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=800&auto=format&fit=crop'},
+          {id:'lx-dress', name:'Satin Slip Dress', price:2999, rating:4.5, category:'Women', img:'https://images.unsplash.com/photo-1520975723139-5be1b8f9b6a6?q=80&w=800&auto=format&fit=crop'},
+          {id:'lx-tee', name:'Oversized Graphic Tee', price:999, rating:4.2, category:'Men', img:'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=800&auto=format&fit=crop'},
+          {id:'lx-sneaker', name:'Retro Court Sneakers', price:4499, rating:4.7, category:'Men', img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop'},
+          {id:'lx-bag', name:'Mini Crossbody Bag', price:1899, rating:4.1, category:'Accessories', img:'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=800&auto=format&fit=crop'},
         ]
       },
       electronics: {
         filters:['Phones','Audio','Laptops','Wearables'],
         products:[
-          {id:'vt-headphones', name:'Noise-Canceling Headphones', price:6999, rating:4.6, img:'https://images.unsplash.com/photo-1518441902113-c1d4e3a76f56?q=80&w=800&auto=format&fit=crop'},
-          {id:'vt-smartwatch', name:'AMOLED Smartwatch', price:5499, rating:4.3, img:'https://images.unsplash.com/photo-1511385348-a52b4a160dc2?q=80&w=800&auto=format&fit=crop'},
-          {id:'vt-laptop', name:'UltraThin Laptop 14', price:57999, rating:4.5, img:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=800&auto=format&fit=crop'},
-          {id:'vt-buds', name:'TWS Earbuds Pro', price:3499, rating:4.0, img:'https://images.unsplash.com/photo-1585386959984-a4155223168f?q=80&w=800&auto=format&fit=crop'},
+          {id:'vt-headphones', name:'Noise-Canceling Headphones', price:6999, rating:4.6, category:'Audio', img:'https://images.unsplash.com/photo-1518441902113-c1d4e3a76f56?q=80&w=800&auto=format&fit=crop'},
+          {id:'vt-smartwatch', name:'AMOLED Smartwatch', price:5499, rating:4.3, category:'Wearables', img:'https://images.unsplash.com/photo-1511385348-a52b4a160dc2?q=80&w=800&auto=format&fit=crop'},
+          {id:'vt-laptop', name:'UltraThin Laptop 14', price:57999, rating:4.5, category:'Laptops', img:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=800&auto=format&fit=crop'},
+          {id:'vt-buds', name:'TWS Earbuds Pro', price:3499, rating:4.0, category:'Audio', img:'https://images.unsplash.com/photo-1585386959984-a4155223168f?q=80&w=800&auto=format&fit=crop'},
         ]
       },
       grocery: {
         filters:['Fruits','Vegetables','Dairy','Bakery'],
         products:[
-          {id:'df-apples', name:'Organic Honeycrisp Apples (1kg)', price:199, rating:4.8, img:'https://images.unsplash.com/photo-1579613832125-5d34a13ffe36?q=80&w=800&auto=format&fit=crop'},
-          {id:'df-bread', name:'Sourdough Bread', price:149, rating:4.4, img:'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?q=80&w=800&auto=format&fit=crop'},
-          {id:'df-milk', name:'A2 Desi Cow Milk (1L)', price:89, rating:4.6, img:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=800&auto=format&fit=crop'},
-          {id:'df-spinach', name:'Baby Spinach (250g)', price:79, rating:4.2, img:'https://images.unsplash.com/photo-1506806732259-39c2d0268443?q=80&w=800&auto=format&fit=crop'},
-        ]
-      },
-      furniture: {
-        filters:['Living','Workspace','Lighting','Storage'],
-        products:[
-          {id:'nl-sofa', name:'Cloud Sectional Sofa', price:89999, rating:4.7, img:'https://images.unsplash.com/photo-1493666438817-866a91353ca9?q=80&w=800&auto=format&fit=crop'},
-          {id:'nl-chair', name:'Ergo Lounge Chair', price:12999, rating:4.4, img:'https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?q=80&w=800&auto=format&fit=crop'},
-          {id:'nl-desk', name:'Solid Wood Work Desk', price:21999, rating:4.5, img:'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=800&auto=format&fit=crop'},
-          {id:'nl-lamp', name:'Arc Floor Lamp', price:4999, rating:4.1, img:'https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=800&auto=format&fit=crop'},
-        ]
-      }
-    };
-
-    // Cart (shared across templates)
-    let CART = [];
-
-    function formatINR(n){
-      return '₹' + Number(n).toLocaleString('en-IN');
-    }
-
-    // Render helpers
-    function renderFilters(site){
-      const row = document.getElementById('filter-row-'+site);
-      row.innerHTML = '';
-      DATA[site].filters.forEach(f=>{
-        const b = document.createElement('button'); b.textContent = f; b.onclick = ()=>{toggleFilter(site,f);};
-        row.appendChild(b);
-      })
-    }
-
-    const ACTIVE_FILTERS = {fashion:[], electronics:[], grocery:[], furniture:[]};
-
-    function toggleFilter(site, filter){
-      const arr = ACTIVE_FILTERS[site];
-      const idx = arr.indexOf(filter);
-      if(idx===-1) arr.push(filter); else arr.splice(idx,1);
-      filterProducts(site);
-    }
-
-    function renderGrid(site, products){
-      const grid = document.getElementById('grid-'+site);
-      grid.innerHTML = '';
-      products.forEach(p=>{
-        const card = document.createElement('div'); card.className='card';
-        card.innerHTML = `
-          <img src="${p.img}" alt="${p.name}" loading="lazy">
-          <div class="title">${p.name}</div>
-          <div class="price">${formatINR(p.price)}</div>
-          <div class="meta">
-            <div style="color:var(--muted);font-size:13px">⭐ ${p.rating}</div>
-            <div><button class="btn" onclick="addToCart('${site}','${p.id}')">Add to cart</button></div>
-          </div>
-        `;
-        grid.appendChild(card);
-      })
-    }
-
-    // Filtering & sorting
-    function filterProducts(site){
-      const q = document.getElementById('q-'+site).value.toLowerCase();
-      const sort = document.getElementById('sort-'+site).value;
-      const active = ACTIVE_FILTERS[site];
-      let products = DATA[site].products.filter(p=>p.name.toLowerCase().includes(q));
-      if(active.length>0){
-        // for demo: keep all (no strong category mapping). In real app filter by category property.
-        // we'll just prefer products that contain any active word
-        products = products.filter(p => active.some(a=>p.name.toLowerCase().includes(a.toLowerCase())) || active.length===0);
-      }
-      if(sort==='price-asc') products.sort((a,b)=>a.price-b.price);
-      if(sort==='price-desc') products.sort((a,b)=>b.price-a.price);
-      if(sort==='rating-desc') products.sort((a,b)=>b.rating-b.rating?b.rating-a.rating:0);
-      renderGrid(site, products);
-      updateCounts();
-    }
-
-    // Cart operations
-    function addToCart(site, pid){
-      const product = DATA[site].products.find(x=>x.id===pid);
-      if(!product) return;
-      const found = CART.find(i=>i.id===product.id);
-      if(found) found.qty += 1; else CART.push({...product, qty:1});
-      updateCartUI();
-      toast('Added to cart');
-    }
-
-    function updateCartUI(){
-      const el = document.getElementById('cart-items');
-      el.innerHTML = '';
-      let total = 0;
-      CART.forEach(item=>{
-        total += item.price * item.qty;
-        const div = document.createElement('div'); div.className='cart-item';
-        div.innerHTML = `
-          <img src="${item.img}" alt="${item.name}">
-          <div style="flex:1">
-            <div style="font-weight:600">${item.name}</div>
-            <div style="color:var(--muted);font-size:13px">${formatINR(item.price)} • Qty <span>${item.qty}</span></div>
-          </div>
-          <div class="qty">
-            <button onclick="changeQty('${item.id}', -1)" class="ghost">-</button>
-            <button onclick="changeQty('${item.id}', 1)" class="ghost">+</button>
-            <button onclick="removeItem('${item.id}')" class="ghost">Remove</button>
-          </div>
-        `;
-        el.appendChild(div);
-      });
-      document.getElementById('cart-total').textContent = formatINR(total);
-      // update small counts on each site button
-      ['fashion','electronics','grocery','furniture'].forEach(s=>{
-        const elc = document.getElementById('count-'+s); if(elc) elc.textContent = CART.length;
-      });
-    }
-
-    function changeQty(id, delta){
-      const it = CART.find(x=>x.id===id); if(!it) return; it.qty += delta; if(it.qty<1) CART = CART.filter(x=>x.id!==id); updateCartUI();
-    }
-    function removeItem(id){ CART = CART.filter(x=>x.id!==id); updateCartUI(); }
-    function clearCart(){ CART = []; updateCartUI(); }
-
-    function toggleCart(){ const c=document.getElementById('cart'); c.style.display = c.style.display==='none'?'block':'none'; updateCartUI(); }
-
-    function checkout(){ if(CART.length===0){ alert('Your cart is empty'); return;} alert('Checkout simulation — total: '+document.getElementById('cart-total').textContent); }
-
-    function updateCounts(){ // display count of available items (not cart) for demo
-      ['fashion','electronics','grocery','furniture'].forEach(s=>{
-        const elc = document.getElementById('count-'+s); if(elc) elc.textContent = DATA[s].products.length;
-      });
-    }
-
-    // tiny toast
-    function toast(msg){ const t = document.createElement('div'); t.textContent=msg; t.style.position='fixed'; t.style.left='50%'; t.style.transform='translateX(-50%)'; t.style.bottom='90px'; t.style.padding='8px 12px'; t.style.background='rgba(0,0,0,0.8)'; t.style.color='#fff'; t.style.borderRadius='8px'; document.body.appendChild(t); setTimeout(()=>t.remove(),1100);
-    }
-
-    // Site switching
-    document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',e=>{
-      document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('active'));
-      e.target.classList.add('active');
-      const site = e.target.getAttribute('data-site');
-      document.querySelectorAll('.site').forEach(s=>s.style.display='none');
-      document.getElementById(site).style.display='block';
-      window.scrollTo({top:0,behavior:'smooth'});
-      // update URL hash
-      history.replaceState(null,'', '#'+site);
-    }));
-
-    // helper: scroll to products area
-    function scrollToProducts(){ window.scrollTo({top:220,behavior:'smooth'}); }
-
-    // initial render
-    ['fashion','electronics','grocery','furniture'].forEach(s=>{ renderFilters(s); filterProducts(s); });
-    updateCounts();
-
-    // open site from hash
-    (function(){ const h=location.hash.replace('#',''); if(h && document.getElementById(h)){ document.querySelector('.tabs button[data-site="'+h+'"]').click(); } })();
-  </script>
-</body>
-</html>
+          {id:'df-apples', name:'Organic Honeycrisp Apples (1kg)', price:199, rating:4.8, category:'Fruits', img:'https://
